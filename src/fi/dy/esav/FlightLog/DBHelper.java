@@ -101,13 +101,14 @@ public class DBHelper extends SQLiteOpenHelper {
 		c.moveToFirst();
 		while (!c.isAfterLast()) {
 			HashMap<String,String> map = new HashMap<String, String>();
-			map.put("id", String.valueOf(c.getInt(0)));
-			map.put("name", c.getString(1));
+			map.put("id", String.valueOf(c.getInt(MODELS_ID_COLUMN)));
+			map.put("name", c.getString(MODELS_NAME_COLUMN));
 			list.add(map);
 			c.moveToNext();
 		}
 		return list;
 	}
+	
 	
 	public void close() {
 		rw_db.close();
