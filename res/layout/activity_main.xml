@@ -19,4 +19,12 @@
         android:layout_below="@+id/button_create"
         android:text="@string/main_buttontext_list" />
 
+    <Button
+        android:id="@+id/button_models"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_list"
+        android:text="@string/main_buttontext_manage" />
+
 </RelativeLayout>

@@ -7,5 +7,8 @@
     <string name="title_activity_list_logs">List logs</string>
     <string name="main_buttontext_create">Create a new log-entry</string>
     <string name="main_buttontext_list">List log-entries</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_model_manager">Model manager</string>
+    <string name="main_buttontext_manage">Manage models</string>
 
 </resources>

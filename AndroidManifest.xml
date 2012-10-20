@@ -34,6 +34,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="fi.dy.esav.FlightLog.MainActivity" />
         </activity>
+        <activity
+            android:name=".ModelManagerActivity"
+            android:label="@string/title_activity_model_manager" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fi.dy.esav.FlightLog.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

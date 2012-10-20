@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
         
         findViewById(R.id.button_create).setOnClickListener(buttonCreateListener);
         findViewById(R.id.button_list).setOnClickListener(buttonListListener);
+        findViewById(R.id.button_models).setOnClickListener(buttonManageListener);
     }
     
     OnClickListener buttonCreateListener = new OnClickListener() {
@@ -30,6 +31,13 @@ public class MainActivity extends Activity {
 		
 		public void onClick(View v) {
 			startActivity(new Intent(getApplicationContext(), ListLogsActivity.class));
+		}
+	};
+	
+    OnClickListener buttonManageListener = new OnClickListener() {
+		
+		public void onClick(View v) {
+			startActivity(new Intent(getApplicationContext(), ModelManagerActivity.class));
 		}
 	};
 
