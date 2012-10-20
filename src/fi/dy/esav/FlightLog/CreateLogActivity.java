@@ -12,6 +12,7 @@ public class CreateLogActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log);
+        DBHelper db = new DBHelper(getApplicationContext());
     }
 
     @Override

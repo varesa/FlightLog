@@ -17,8 +17,6 @@ public class MainActivity extends Activity {
         
         findViewById(R.id.button_create).setOnClickListener(buttonCreateListener);
         findViewById(R.id.button_list).setOnClickListener(buttonListListener);
-        
-        DBHelper db = new DBHelper(getApplicationContext());
     }
     
     OnClickListener buttonCreateListener = new OnClickListener() {
