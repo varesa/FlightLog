@@ -15,6 +15,7 @@ public class ListLogsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_logs);
         db = new DBHelper(getApplicationContext());
+        db.list_all();
     }
 
     @Override

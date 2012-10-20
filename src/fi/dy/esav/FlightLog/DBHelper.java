@@ -76,7 +76,9 @@ public class DBHelper extends SQLiteOpenHelper {
 	public void list_all() {
 		Log.d("FL", "Printing models from DB");
 		Cursor c = query("models", null, null, null, null, null, null);
-		while(!c.isLast()) {
+		Log.d("FL", "Amoun of rows: " + c.getCount());
+		c.moveToFirst();
+		while (!c.isAfterLast()) {
 			Log.d("FL", "_ID: " + c.getInt(0) + ", name: " + c.getString(1));
 			c.moveToNext();
 		}

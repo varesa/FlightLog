@@ -15,6 +15,7 @@ public class CreateLogActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log);
         db = new DBHelper(this);
+        db.insert_test();
     }
 
     @Override
