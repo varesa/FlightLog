@@ -8,11 +8,13 @@ import android.support.v4.app.NavUtils;
 
 public class ListLogsActivity extends Activity {
 
+	DBHelper db;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_logs);
-        DBHelper db = new DBHelper(getApplicationContext());
+        db = new DBHelper(getApplicationContext());
     }
 
     @Override
@@ -30,6 +32,12 @@ public class ListLogsActivity extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public void onDestroy() {
+    	db.close();
+    	super.onDestroy();
     }
 
 }

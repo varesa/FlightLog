@@ -8,11 +8,13 @@ import android.support.v4.app.NavUtils;
 
 public class CreateLogActivity extends Activity {
 
+	DBHelper db;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_log);
-        DBHelper db = new DBHelper(getApplicationContext());
+        db = new DBHelper(this);
     }
 
     @Override
@@ -32,4 +34,9 @@ public class CreateLogActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onDestroy() {
+    	db.close();
+    	super.onDestroy();
+    }
 }

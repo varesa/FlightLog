@@ -3,14 +3,11 @@
  */
 package fi.dy.esav.FlightLog;
 
-import java.util.logging.Logger;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.CancellationSignal;
 import android.util.Log;
 
 /**
@@ -63,7 +60,32 @@ public class DBHelper extends SQLiteOpenHelper {
 	}
 	
 	public long insert(String table, String nullColumnHack, ContentValues values) {
+
 		return rw_db.insert(table, nullColumnHack, values);
+	}
+	
+	public void insert_test() {
+		Log.d("FL", "Inserting values to DB");
+		ContentValues values = new ContentValues();
+		values.put("name", "Radjet");
+		insert("models", null, values);
+		values.put("name", "Axn Floater Jet");
+		insert("models", null, values);
+	}
+	
+	public void list_all() {
+		Log.d("FL", "Printing models from DB");
+		Cursor c = query("models", null, null, null, null, null, null);
+		while(!c.isLast()) {
+			Log.d("FL", "_ID: " + c.getInt(0) + ", name: " + c.getString(1));
+			c.moveToNext();
+		}
+	}
+	
+	public void close() {
+		rw_db.close();
+		ro_db.close();
+		super.close();
 	}
 	
 }
