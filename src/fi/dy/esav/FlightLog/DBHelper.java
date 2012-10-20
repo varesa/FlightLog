@@ -98,10 +98,11 @@ public class DBHelper extends SQLiteOpenHelper {
 	public ArrayList<HashMap<String, String>> getModels() {
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
 		Cursor c = query("models", null, null, null, null, null, null);
+		c.moveToFirst();
 		while (!c.isAfterLast()) {
 			HashMap<String,String> map = new HashMap<String, String>();
-			map.put("id", String.valueOf(c.getInt(MODELS_ID_COLUMN)));
-			map.put("name", c.getString(MODELS_NAME_COLUMN));
+			map.put("id", String.valueOf(c.getInt(0)));
+			map.put("name", c.getString(1));
 			list.add(map);
 			c.moveToNext();
 		}
