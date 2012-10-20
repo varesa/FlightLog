@@ -109,6 +109,31 @@ public class DBHelper extends SQLiteOpenHelper {
 		return list;
 	}
 	
+	public HashMap<String,String> getModel(int id) {
+		Cursor c = query("models",null,"_id=" + id,null,null,null,null);
+		HashMap<String,String> map = new HashMap<String, String>();
+		c.moveToFirst();
+		map.put("id", String.valueOf(c.getInt(MODELS_ID_COLUMN)));
+		map.put("name", c.getString(MODELS_NAME_COLUMN));
+		return map;
+	}
+	
+	public ArrayList<HashMap<String, String>> getFlights() {
+		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
+		Cursor c = query("", null, null, null, null, null, null);
+		c.moveToFirst();
+		while (!c.isAfterLast()) {
+			HashMap<String,String> map = new HashMap<String, String>();
+			map.put("id", String.valueOf(c.getInt(FLIGHTS_ID_COLUMN)));
+			map.put("time", String.valueOf(c.getInt(FLIGHTS_TIME_COLUMN)));
+			map.put("model", String.valueOf(c.getInt(FLIGHTS_PLANE_COLUMN)));
+			map.put("plane_name", getModel(c.getInt(FLIGHTS_ID_COLUMN)).get("name"));
+			list.add(map);
+			c.moveToNext();
+		}
+		return list;
+	}
+	
 	
 	public void close() {
 		rw_db.close();
