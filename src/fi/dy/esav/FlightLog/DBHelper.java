@@ -3,6 +3,10 @@
  */
 package fi.dy.esav.FlightLog;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -18,6 +22,13 @@ public class DBHelper extends SQLiteOpenHelper {
 	
 	 final static String DB_NAME = "FlightLogDB";
 	 final static int DB_VERSION = 1;
+	 
+	 final static int MODELS_ID_COLUMN = 0;
+	 final static int MODELS_NAME_COLUMN = 1;
+	 
+	 final static int FLIGHTS_ID_COLUMN = 0;
+	 final static int FLIGHTS_TIME_COLUMN = 1;
+	 final static int FLIGHTS_PLANE_COLUMN = 2;
 	 
 	 Context context;
 	 
@@ -82,6 +93,19 @@ public class DBHelper extends SQLiteOpenHelper {
 			Log.d("FL", "_ID: " + c.getInt(0) + ", name: " + c.getString(1));
 			c.moveToNext();
 		}
+	}
+	
+	public ArrayList<HashMap<String, String>> getModels() {
+		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
+		Cursor c = query("models", null, null, null, null, null, null);
+		while (!c.isAfterLast()) {
+			HashMap<String,String> map = new HashMap<String, String>();
+			map.put("id", String.valueOf(c.getInt(MODELS_ID_COLUMN)));
+			map.put("name", c.getString(MODELS_NAME_COLUMN));
+			list.add(map);
+			c.moveToNext();
+		}
+		return list;
 	}
 	
 	public void close() {
